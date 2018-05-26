@@ -13,7 +13,8 @@
 //
 #include <main.h>
 #include <iostream>
-#include <assert.h>
+#include <stdio.h>
+#include <float.h>
 //
 // Structures
 //
@@ -100,7 +101,7 @@ int main(void){
 //---------------------------------------------------------------------------
 	for(;;){
 		if (SYS.CPU.Updated) {
-			sprintf(cpu,"CPU: %2.3f%%", SYS.CPU.Load);
+			sprintf(cpu,"CPU : %2.3f%%", SYS.CPU.Load);
 			printf("CPU: %2.3f%%\r\n", SYS.CPU.Load);
 		}
 		asm ("  NOP");
@@ -161,7 +162,7 @@ void __EXTI_Interrupt(uint16_t GPIO_Pin){
 		printf("AdcA3 = %ld (%.3fV), ", ADC_value.ADC_A3, ADC_value.ADC_A3 * 3.3f / 4095.0f);
 		printf("AdcA4 = %ld (%.3fV), ", ADC_value.ADC_A4, ADC_value.ADC_A4 * 3.3f / 4095.0f);
 		printf("AdcA5 = %ld (%.3fV);\r\n", ADC_value.ADC_A5, ADC_value.ADC_A5 * 3.3f / 4095.0f);
-*/		printf("AdcA0 = %ld (%.3fV), ", ADC_value.ADC_A0, ADC_value.ADC_A0 * 3.3f / 4095.0f);
+*/		//printf("AdcA0 = %ld (%.3fV), ", ADC_value.ADC_A0, ADC_value.ADC_A0 * 3.3f / 4095.0f);
 		OLED.ssd1306_draw_bitmap(0, 0, &Rysunek12[0], SSD1306_WIDTH, SSD1306_HEIGHT);
 		OLED.ssd1306_refresh_gram();
 		ePaper.DisplayFrame(gImage_ee);
@@ -187,7 +188,7 @@ void USART2_IRQHandler(void){
 void __TIM_Interrupt(void) {
 //	LED.TogglePinValue();
 //	printf("TIM:\r\n");
-	printf("AdcA0 = %ld (%.3fV), ", ADC_value.ADC_A0, ADC_value.ADC_A0 * 3.3f / 4095.0f);
+	//printf("AdcA0 = %ld (%.3fV), ", ADC_value.ADC_A0, ADC_value.ADC_A0 * 3.3f / 4095.0f);
 }
 
 void TIM4_IRQHandler(void){
